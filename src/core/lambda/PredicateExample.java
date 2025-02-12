@@ -1,4 +1,4 @@
-package core.behavior.parameterization;
+package core.lambda;
 
 import core.Base;
 
@@ -10,8 +10,8 @@ import java.util.logging.Logger;
 /**
  * demonstrates behavior parameterization with a predicate.
  */
-public class PredicateFilterExample implements Base {
-    Logger log = Logger.getLogger(PredicateFilterExample.class.getName());
+public class PredicateExample implements Base {
+    Logger log = Logger.getLogger(PredicateExample.class.getName());
 
     @Override
     public void run() {
