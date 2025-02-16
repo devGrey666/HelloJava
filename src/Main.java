@@ -1,8 +1,4 @@
-import core.lambda.*;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import core.java8.lambda.*;
 
 public class Main {
     public static void main(String[] args) {

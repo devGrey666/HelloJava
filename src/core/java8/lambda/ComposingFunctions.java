@@ -1,4 +1,4 @@
-package core.lambda;
+package core.java8.lambda;
 
 import java.util.function.Function;
 import core.Base;
