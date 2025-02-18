@@ -50,5 +50,7 @@ public class StreamImplementation implements Base {
         List<Integer> numbers2 = List.of(3, 4);
         numbers1.stream().flatMap(i -> numbers2.stream().map(j -> new int[]{i, j})).forEach(pair -> System.out.println("(" + pair[0] + ", " + pair[1] + ")"));
 
+//        use two lists of numbers to find each pair of numbers whose sum is divisible by 3
+        numbers1.stream().flatMap(i -> numbers2.stream().filter(j -> (i + j) % 3 == 0).map(j -> new int[]{i, j})).forEach(pair -> System.out.println("(" + pair[0] + ", " + pair[1] + ")"));
     }
 }
