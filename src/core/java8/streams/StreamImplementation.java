@@ -44,6 +44,11 @@ public class StreamImplementation implements Base {
         List<Integer> numbersList = List.of(1, 2, 3, 4, 5);
         numbersList.stream().map(i -> i * i).forEach(System.out::println);
 
-;
+        //        use two lists of numbers to find each pair of numbers
+
+        List<Integer> numbers1 = List.of(1, 2, 3);
+        List<Integer> numbers2 = List.of(3, 4);
+        numbers1.stream().flatMap(i -> numbers2.stream().map(j -> new int[]{i, j})).forEach(pair -> System.out.println("(" + pair[0] + ", " + pair[1] + ")"));
+
     }
 }
