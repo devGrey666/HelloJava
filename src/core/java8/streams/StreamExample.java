@@ -2,6 +2,7 @@ package core.java8.streams;
 
 import core.Base;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -27,5 +28,9 @@ public class StreamExample implements Base {
 
         //        find all unique cities where the traders work
         transactions.stream().map(transaction -> transaction.getTrader().getCity()).distinct().forEach(System.out::println);
+
+        //        find all traders from Cambridge and sort them by name
+        transactions.stream().map(Transaction::getTrader).filter(trader -> trader.getCity().equals("Cambridge")).distinct().sorted(Comparator.comparing(Trader::getName)).forEach(System.out::println);
+
     }
 }
