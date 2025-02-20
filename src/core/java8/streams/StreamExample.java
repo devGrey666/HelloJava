@@ -40,8 +40,8 @@ public class StreamExample implements Base {
         //        what's the highest value of all the transactions?
         transactions.stream().map(Transaction::getValue).reduce(Integer::max).ifPresent(value -> System.out.println("Highest value: " + value));
 
-        //        what's the smallest value of all the transactions?
-        transactions.stream().map(Transaction::getValue).reduce(Integer::min).ifPresent(value -> System.out.println("Smallest value: " + value));
+        //        find the transaction with the smallest value
+        transactions.stream().min(comparing(Transaction::getValue)).ifPresent(value -> System.out.println("Smallest value: " + value));
 
     }
 
