@@ -32,5 +32,8 @@ public class StreamExample implements Base {
         //        find all traders from Cambridge and sort them by name
         transactions.stream().map(Transaction::getTrader).filter(trader -> trader.getCity().equals("Cambridge")).distinct().sorted(Comparator.comparing(Trader::getName)).forEach(System.out::println);
 
+        //        return a string of all traders' names sorted alphabetically
+        var traderNames = transactions.stream().map(transaction -> transaction.getTrader().getName()).distinct().sorted().reduce("", (n1, n2) -> n1 + n2);
+        System.out.println(traderNames);
     }
 }
