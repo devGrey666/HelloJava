@@ -33,6 +33,14 @@ public class StreamExample implements Base {
         var milanBased = transactions.stream().anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
         System.out.println(milanBased);
 
+        //        print all transactions' values from the traders living in Cambridge
+        transactions.stream().filter(transaction -> transaction.getTrader().getCity().equals("Cambridge")).map(Transaction::getValue).forEach(System.out::println);
+
+        //        what's the highest value of all the transactions?
+        transactions.stream().map(Transaction::getValue).reduce(Integer::max).ifPresent(value -> System.out.println("Highest value: " + value));
+
+        //        what's the smallest value of all the transactions?
+        transactions.stream().map(Transaction::getValue).reduce(Integer::min).ifPresent(value -> System.out.println("Smallest value: " + value));
 
     }
 
