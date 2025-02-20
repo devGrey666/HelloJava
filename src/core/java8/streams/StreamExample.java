@@ -28,5 +28,20 @@ public class StreamExample implements Base {
         //        return a string of all traders' names sorted alphabetically
         var traderNames = transactions.stream().map(transaction -> transaction.getTrader().getName()).distinct().sorted().reduce("", (n1, n2) -> n1 + n2);
         System.out.println(traderNames);
+
+        //        are any traders based in Milan?
+        var milanBased = transactions.stream().anyMatch(transaction -> transaction.getTrader().getCity().equals("Milan"));
+        System.out.println(milanBased);
+
+
+    }
+
+    private static List<Transaction> getTransactions() {
+        Trader raoul = new Trader("Raoul", "Cambridge");
+        Trader mario = new Trader("Mario", "Milan");
+        Trader brian = new Trader("Brian", "Cambridge");
+        Trader jen = new Trader("Jen", "Milan");
+
+        return List.of(new Transaction(brian, 2011, 300), new Transaction(raoul, 2012, 1000), new Transaction(raoul, 2011, 400), new Transaction(mario, 2012, 710), new Transaction(mario, 2012, 700), new Transaction(jen, 2012, 950));
     }
 }
