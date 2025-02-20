@@ -2,8 +2,9 @@ package core.java8.streams;
 
 import core.Base;
 
-import java.util.Comparator;
 import java.util.List;
+
+import static java.util.Comparator.comparing;
 
 /**
  * Stream Example, All examples are taken from the book Java 8 in Action by Raoul-Gabriel Urma, Mario Fusco, and Alan Mycroft
@@ -17,13 +18,13 @@ public class StreamExample implements Base {
 
 
         //        find all transactions in the year 2011 and sort them by value (high to small)
-        transactions.stream().filter(transaction -> transaction.getYear() == 2011).sorted((t1, t2) -> t2.getValue() - t1.getValue()).forEach(System.out::println);
+        transactions.stream().filter(transaction -> transaction.getYear() == 2011).sorted(comparing(Transaction::getValue).reversed()).forEach(System.out::println);
 
         //        find all unique cities where the traders work
         transactions.stream().map(transaction -> transaction.getTrader().getCity()).distinct().forEach(System.out::println);
 
         //        find all traders from Cambridge and sort them by name
-        transactions.stream().map(Transaction::getTrader).filter(trader -> trader.getCity().equals("Cambridge")).distinct().sorted(Comparator.comparing(Trader::getName)).forEach(System.out::println);
+        transactions.stream().map(Transaction::getTrader).filter(trader -> trader.getCity().equals("Cambridge")).distinct().sorted(comparing(Trader::getName)).forEach(System.out::println);
 
         //        return a string of all traders' names sorted alphabetically
         var traderNames = transactions.stream().map(transaction -> transaction.getTrader().getName()).distinct().sorted().reduce("", (n1, n2) -> n1 + n2);
