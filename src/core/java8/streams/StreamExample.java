@@ -25,6 +25,7 @@ public class StreamExample implements Base {
         //        find all transactions in the year 2011 and sort them by value (high to small)
         transactions.stream().filter(transaction -> transaction.getYear() == 2011).sorted((t1, t2) -> t2.getValue() - t1.getValue()).forEach(System.out::println);
 
-
+        //        find all unique cities where the traders work
+        transactions.stream().map(transaction -> transaction.getTrader().getCity()).distinct().forEach(System.out::println);
     }
 }
