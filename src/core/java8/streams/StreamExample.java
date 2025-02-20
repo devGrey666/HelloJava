@@ -13,14 +13,7 @@ public class StreamExample implements Base {
     public void run() {
         System.out.println("Stream Example");
 
-        Trader raoul = new Trader("Raoul", "Cambridge");
-        Trader mario = new Trader("Mario", "Milan");
-        Trader alan = new Trader("Alan", "Cambridge");
-        Trader brian = new Trader("Brian", "Cambridge");
-        Trader jason = new Trader("Jason", "Cambridge");
-        Trader jen = new Trader("Jen", "Milan");
-
-        var transactions = List.of(new Transaction(brian, 2011, 300), new Transaction(raoul, 2012, 1000), new Transaction(raoul, 2011, 400), new Transaction(mario, 2012, 710), new Transaction(mario, 2012, 700), new Transaction(jen, 2012, 950));
+        var transactions = getTransactions();
 
 
         //        find all transactions in the year 2011 and sort them by value (high to small)
