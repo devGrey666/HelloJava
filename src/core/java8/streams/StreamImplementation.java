@@ -4,8 +4,6 @@ import core.Base;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class StreamImplementation implements Base {
     @Override
@@ -17,7 +15,7 @@ public class StreamImplementation implements Base {
         List<Dish> menu = List.of(new Dish("beef", false, 700, Dish.Type.MEAT), new Dish("chicken", false, 400, Dish.Type.MEAT), new Dish("french fries", true, 530, Dish.Type.OTHER), new Dish("rice", true, 350, Dish.Type.OTHER), new Dish("season fruit", true, 120, Dish.Type.OTHER), new Dish("pizza", true, 550, Dish.Type.OTHER), new Dish("prawns", false, 300, Dish.Type.FISH), new Dish("salmon", false, 450, Dish.Type.FISH));
 
 //        filter values based on a predicate
-        var vegetarianDishes = menu.stream().filter(Dish::isVegetarian).toList();
+        var vegetarianDishes = menu.stream().filter(Dish::vegetarian).toList();
         System.out.println(vegetarianDishes);
 
 //        filter values based on a predicate and return unique values
@@ -31,10 +29,10 @@ public class StreamImplementation implements Base {
         numbers.stream().filter(i -> i % 2 == 0).distinct().skip(1).forEach(System.out::println);
 
 //        map the values to another value
-        menu.stream().map(Dish::getName).forEach(System.out::println);
+        menu.stream().map(Dish::name).forEach(System.out::println);
 
 //        filter the first two meat dishes
-        menu.stream().filter(dish -> dish.getType() == Dish.Type.MEAT).limit(2).forEach(System.out::println);
+        menu.stream().filter(dish -> dish.type() == Dish.Type.MEAT).limit(2).forEach(System.out::println);
 
 //        flatMap the values
         List<String> words = List.of("Hello", "World");

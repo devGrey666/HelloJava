@@ -13,15 +13,15 @@ public class NumericStream implements Base {
         var transactions = getTransactions();
 
 //        mapping to a numeric stream
-        var sum = transactions.stream().mapToInt(Transaction::getValue).sum();
+        var sum = transactions.stream().mapToInt(Transaction::value).sum();
         System.out.println("Sum of all transactions: " + sum);
 
 //        converting back to object stream
-        IntStream intStream = transactions.stream().mapToInt(Transaction::getValue);
+        IntStream intStream = transactions.stream().mapToInt(Transaction::value);
         Stream<Integer> transactionStream = intStream.boxed();
 
 //        optional value for numeric streams
-        OptionalInt max = transactions.stream().mapToInt(Transaction::getValue).max();
+        OptionalInt max = transactions.stream().mapToInt(Transaction::value).max();
         int maxInt = max.orElse(1);
         System.out.println("Max value: " + maxInt);
 
